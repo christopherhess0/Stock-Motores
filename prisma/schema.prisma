@@ -1,0 +1,30 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  // ✅ Comentá o borrá el output
+  // output   = "../generated/prisma"
+}
+
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+model Motor {
+  id            String   @id @default(uuid())       // ID único automático
+  marca         String                               // DODGE, FORD, etc.
+  vehiculo      String                               // RAM, F100, etc.
+  cilindrada    Float                                // 5.9, 3.0, etc.
+  valvulas      Int                                  // 24, 16, etc.
+  modelo        Int                                  // Año: 2008, 2012
+  combustible   String                               // nafta o diesel
+  fechaIngreso  DateTime @default(now())             // Se genera automático
+  fechaEgreso   DateTime?                            // Opcional
+  fotoUrl       String?                              // Link a la imagen
+}
+
