@@ -1,12 +1,12 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
 import { Prisma } from '@prisma/client';
-
+import { CreateMotorDto } from './motores.dto';
 @Injectable()
 export class MotoresService {
   constructor(private prisma: PrismaService) {}
 
-  create(data: Prisma.MotorCreateInput) {
+  create(data: CreateMotorDto) {
     return this.prisma.motor.create({ data });
   }
 
